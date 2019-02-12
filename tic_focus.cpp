@@ -16,6 +16,7 @@
  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  Boston, MA 02110-1301, USA.
 *******************************************************************************/
+#include <cmath>
 #include <stdio.h>
 #include <unistd.h>
 #include <memory>
@@ -517,7 +518,7 @@ IPState FocusTic::MoveAbsFocuser(int targetTicks)
 
     IDMessage(getDeviceName() , "TicFocuser is moving %s", direction);
 
-    int ticks = abs(targetTicks - FocusAbsPosN[0].value);
+    int ticks = std::fabs(targetTicks - FocusAbsPosN[0].value);
 
     hnd.exit_safe_start();
     hnd.set_target_position(targetTicks);
